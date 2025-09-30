@@ -1,0 +1,15 @@
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\bin\Debug\ModulesPR3.exe.config
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\bin\Debug\ModulesPR3.exe
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\bin\Debug\ModulesPR3.pdb
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.csproj.AssemblyReference.cache
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\MainWindow.g.cs
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\App.g.cs
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3_MarkupCompile.cache
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3_MarkupCompile.lref
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\MainWindow.baml
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.g.resources
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.Properties.Resources.resources
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.csproj.GenerateResource.cache
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.csproj.CoreCompileInputs.cache
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.exe
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.pdb
