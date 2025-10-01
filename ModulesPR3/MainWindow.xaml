@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModulesPR3"
         mc:Ignorable="d"
-        Title="Практическая работа 3" Height="800" Width="915">
+        Title="Практическая работа 3" Height="800" Width="915" Icon="/Resources/Logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -17,9 +17,18 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Background="DarkBlue">
-            
+            <Image HorizontalAlignment="Left" Height="50" Margin="21,17,0,0" VerticalAlignment="Top" Width="50" Source="/Resources/Logo.ico"/>
         </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Button x:Name='btnBack' 
+                    Content="Назад"/>
+        </Grid>
+        
+        <Frame Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" 
+               x:Name="frmMain"
+               NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
