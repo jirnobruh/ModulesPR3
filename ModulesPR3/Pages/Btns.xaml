@@ -5,8 +5,32 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ModulesPR3.Pages"
       mc:Ignorable="d"
-      Title="Btns" Height="450" Width="800">
+      Title="Btns" Height="500" Width="915">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
         
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Button x:Name="btnAuthGuest"
+                    Height="80" Width="120"
+                    Click="BtnAuthGuest_OnClick"
+                    Content="Войти как гость"/>
+        </Grid>
+        
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Button x:Name="btnAuth"
+                    Height="80" Width="100"
+                    Click="BtnAuth_OnClick"
+                    Content="Войти"/>
+        </Grid>
     </Grid>
 </Page>

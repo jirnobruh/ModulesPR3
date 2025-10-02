@@ -13,3 +13,11 @@ C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.csproj.G
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.csproj.CoreCompileInputs.cache
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.exe
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.pdb
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.exe.config
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\App.baml
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Btns.g.cs
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Btns.baml
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Auth.g.cs
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Clients.g.cs
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Auth.baml
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Clients.baml

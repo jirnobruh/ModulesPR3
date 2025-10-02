@@ -63,11 +63,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Auth.xaml" />
     <Page Include="Pages\Btns.xaml" />
+    <Page Include="Pages\Clients.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Auth.xaml.cs">
+      <DependentUpon>Auth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Btns.xaml.cs">
       <DependentUpon>Btns.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Clients.xaml.cs">
+      <DependentUpon>Clients.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
