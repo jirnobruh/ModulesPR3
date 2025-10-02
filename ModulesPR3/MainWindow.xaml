@@ -30,6 +30,7 @@
         <Frame Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" 
                x:Name="frmMain"
                Initialized="FrmMain_OnInitialized"
-               NavigationUIVisibility="Hidden"/>
+               NavigationUIVisibility="Hidden"
+               ContentRendered="FrmMain_OnContentRendered"/>
     </Grid>
 </Window>

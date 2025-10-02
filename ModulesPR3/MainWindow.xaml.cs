@@ -38,5 +38,17 @@ namespace ModulesPR3
                 throw;
             }
         }
+
+        private void FrmMain_OnContentRendered(object sender, EventArgs e)
+        {
+            if (frmMain.CanGoBack)
+            {
+                btnBack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnBack.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
