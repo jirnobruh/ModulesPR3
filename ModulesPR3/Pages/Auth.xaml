@@ -8,53 +8,79 @@
       Background="#f0f2f5"
       Title="Auth" Height="500" Width="915">
     <Grid>
-        <Border Width="350" Height="300"
-                Background="White"
-                CornerRadius="10"
-                Padding="20"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                
-                <TextBlock Text="Авторизация"
-                           FontSize="28"
-                           FontWeight="Bold"
-                           Foreground="#333"
-                           HorizontalAlignment="Center"/>
+        <Grid Width="350" Height="300"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              ClipToBounds="True">
+            <Rectangle Fill="White" RadiusX="10" RadiusY="10"/>
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <StackPanel>
-                    <TextBlock Text="Логин" FontSize="16" Margin="0,0,0,5"/>
-                    <TextBox x:Name="txtbLogin"
-                             Height="30"
-                             Width="250"
-                             Padding="5"
-                             Background="#eef"
-                             BorderBrush="#ccc"
-                             BorderThickness="1"/>
-                </StackPanel>
+                <Grid Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,8">
+                    <TextBlock Text="Авторизация"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="#333"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
 
-                <StackPanel>
-                    <TextBlock Text="Пароль" FontSize="16" Margin="0,10,0,5"/>
-                    <PasswordBox x:Name="txtbPassword"
+                <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="0,6,0,6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Логин" FontSize="16" Grid.Row="0" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtbLogin"
+                                 Grid.Row="1"
                                  Height="30"
                                  Width="250"
                                  Padding="5"
                                  Background="#eef"
                                  BorderBrush="#ccc"
                                  BorderThickness="1"/>
-                </StackPanel>
+                    </Grid>
 
-                <Button x:Name="btnLogIn"
-                        Content="Войти"
-                        Width="250"
-                        Height="35"
-                        Background="DarkBlue"
-                        Foreground="White"
-                        FontWeight="Bold"
-                        BorderThickness="0"
-                        Click="BtnLogIn_OnClick"
-                        Margin="0,20,0,0"/>
-            </StackPanel>
-        </Border>
+                    <Grid Grid.Row="1" Margin="0,6,0,6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Пароль" FontSize="16" Grid.Row="0" Margin="0,10,0,5"/>
+                        <PasswordBox x:Name="txtbPassword"
+                                     Grid.Row="1"
+                                     Height="30"
+                                     Width="250"
+                                     Padding="5"
+                                     Background="#eef"
+                                     BorderBrush="#ccc"
+                                     BorderThickness="1"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <Button x:Name="btnLogIn"
+                            Content="Войти"
+                            Width="250"
+                            Height="35"
+                            Background="DarkBlue"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Click="BtnLogIn_OnClick"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

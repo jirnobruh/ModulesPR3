@@ -18,7 +18,11 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Background="DarkBlue">
-            <Image HorizontalAlignment="Left" Height="50" Margin="21,17,0,0" VerticalAlignment="Top" Width="50" Source="/Resources/Logo.ico"/>
+            <Image HorizontalAlignment="Left" 
+                   Height="50" Margin="21,17,0,0" 
+                   VerticalAlignment="Top" 
+                   Width="50" 
+                   Source="/Resources/Logo.ico"/>
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="0">
