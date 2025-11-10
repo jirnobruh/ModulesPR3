@@ -8,7 +8,7 @@
       Background="#f0f2f5"
       Title="Auth" Height="500" Width="915">
     <Grid>
-        <Grid Width="350" Height="300"
+        <Grid Width="350" Height="350"
               VerticalAlignment="Center"
               HorizontalAlignment="Center"
               ClipToBounds="True">
@@ -17,6 +17,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
@@ -79,6 +80,17 @@
                             FontWeight="Bold"
                             BorderThickness="0"
                             Click="BtnLogIn_OnClick"/>
+                </Grid>
+                <Grid Grid.Row="3" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <Button x:Name="btnLogInGuest"
+                            Content="Войти как гость"
+                            Width="250"
+                            Height="35"
+                            Background="DarkBlue"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Click="BtnLogInGuest_OnClick"/>
                 </Grid>
             </Grid>
         </Grid>

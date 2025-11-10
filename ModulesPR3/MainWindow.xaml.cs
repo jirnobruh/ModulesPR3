@@ -17,7 +17,7 @@ namespace ModulesPR3
         {
             try
             {
-                frmMain.Content = new Pages.Btns();
+                frmMain.Content = new Pages.Auth();
             }
             catch (Exception exception)
             {

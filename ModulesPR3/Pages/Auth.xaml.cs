@@ -23,5 +23,18 @@ namespace ModulesPR3.Pages
                 throw;
             }
         }
+
+        private void BtnLogInGuest_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new Pages.Clients());
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("btnAuthGuest error:", exception);
+                throw;
+            }
+        }
     }
 }
