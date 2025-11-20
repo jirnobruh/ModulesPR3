@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesPR3", "ModulesPR3\ModulesPR3.csproj", "{08CCAFF3-FBC1-4E94-924A-C9165CCCC180}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesPR5", "..\ModulesPR5\ModulesPR5\ModulesPR5.csproj", "{F77349DE-2096-44F8-A7E6-057E26B88489}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{08CCAFF3-FBC1-4E94-924A-C9165CCCC180}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08CCAFF3-FBC1-4E94-924A-C9165CCCC180}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08CCAFF3-FBC1-4E94-924A-C9165CCCC180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F77349DE-2096-44F8-A7E6-057E26B88489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77349DE-2096-44F8-A7E6-057E26B88489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77349DE-2096-44F8-A7E6-057E26B88489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77349DE-2096-44F8-A7E6-057E26B88489}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
