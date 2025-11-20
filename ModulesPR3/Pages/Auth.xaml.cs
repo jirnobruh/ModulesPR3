@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading; // <- нужен для DispatcherTimer
 using HashPasswords;
 using ModulesPR3.Services;
 using ModulesPR5.Models;
@@ -14,21 +15,91 @@ namespace ModulesPR3.Pages
         private int failedAttempts = 0;
         private string currentCaptcha = string.Empty;
 
+        // Блокировка
+        private DispatcherTimer lockoutTimer;
+        private int lockoutSecondsRemaining = 0;
+        private const int LOCKOUT_SECONDS = 10;
+        private const int LOCKOUT_THRESHOLD = 3;
+
         public Auth()
         {
             InitializeComponent();
-            // Капча скрыта по умолчанию в XAML, но на всякий случай явно скрываем здесь
             HideCaptcha();
+            InitializeLockoutTimer();
+        }
+
+        private void InitializeLockoutTimer()
+        {
+            lockoutTimer = new DispatcherTimer();
+            lockoutTimer.Interval = TimeSpan.FromSeconds(1);
+            lockoutTimer.Tick += LockoutTimer_Tick;
+        }
+
+        private void LockoutTimer_Tick(object sender, EventArgs e)
+        {
+            lockoutSecondsRemaining--;
+            if (lockoutSecondsRemaining <= 0)
+            {
+                StopLockout();
+            }
+            else
+            {
+                UpdateLockTimerText();
+            }
+        }
+
+        private void StartLockout()
+        {
+            // Отключаем поля и кнопки
+            SetInputsEnabled(false);
+
+            lockoutSecondsRemaining = LOCKOUT_SECONDS;
+            UpdateLockTimerText();
+            tbLockTimer.Visibility = Visibility.Visible;
+
+            lockoutTimer.Start();
+        }
+
+        private void StopLockout()
+        {
+            lockoutTimer.Stop();
+            tbLockTimer.Visibility = Visibility.Collapsed;
+            SetInputsEnabled(true);
+
+            // после разблокировки сбрасываем счётчик неудач и капчу (по желанию)
+            failedAttempts = 0;
+            HideCaptcha();
+        }
+
+        private void UpdateLockTimerText()
+        {
+            tbLockTimer.Text = $"До разблокировки: {lockoutSecondsRemaining} с.";
+        }
+
+        private void SetInputsEnabled(bool enabled)
+        {
+            txtbLogin.IsEnabled = enabled;
+            txtbPassword.IsEnabled = enabled;
+            btnLogIn.IsEnabled = enabled;
+            btnLogInGuest.IsEnabled = enabled;
+
+            // Капча может быть показана; контролируйте её активность отдельно
+            txtbCaptcha.IsEnabled = enabled;
+            // Если хотите полностью скрывать капчу при блокировке, можете
+            // CaptchaPanel.IsEnabled = enabled;
         }
 
         private void BtnLogIn_OnClick(object sender, RoutedEventArgs e)
         {
             try
             {
+                // Если в данный момент заблокировано — прерываем (доп. защита)
+                if (!btnLogIn.IsEnabled) return;
+
                 string login = txtbLogin.Text.Trim();
                 string passwordHash = Hash.HashPassword(txtbPassword.Password.Trim());
 
-                // Если капча уже показана, проверяем её ввод до обращения к БД
+                // Если капча показана, проверяем её ввод до обращения к БД
                 if (IsCaptchaVisible())
                 {
                     string entered = txtbCaptcha.Text?.Trim() ?? string.Empty;
@@ -37,6 +108,7 @@ namespace ModulesPR3.Pages
                         MessageBox.Show("Код капчи введён неверно. Попробуйте снова.");
                         GenerateCaptcha(); // обновляем капчу при неверном вводе
                         failedAttempts++;
+                        CheckLockoutAfterFailure();
                         return;
                     }
                 }
@@ -59,6 +131,7 @@ namespace ModulesPR3.Pages
                     MessageBox.Show("Вы ввели логин или пароль неверно!");
                     failedAttempts++;
                     GenerateCaptcha();
+                    CheckLockoutAfterFailure();
                 }
             }
             catch (Exception exception)
@@ -68,10 +141,19 @@ namespace ModulesPR3.Pages
             }
         }
 
+        private void CheckLockoutAfterFailure()
+        {
+            if (failedAttempts >= LOCKOUT_THRESHOLD)
+            {
+                StartLockout();
+            }
+        }
+
         private void BtnLogInGuest_OnClick(object sender, RoutedEventArgs e)
         {
             try
             {
+                if (!btnLogInGuest.IsEnabled) return;
                 NavigationService.Navigate(new Pages.Clients());
             }
             catch (Exception exception)
@@ -83,7 +165,6 @@ namespace ModulesPR3.Pages
 
         private void GenerateCaptcha()
         {
-            // Генерация и показ капчи
             currentCaptcha = CaptchaGenerator.GenerateCaptchaText(6);
             tbCaptcha.Text = currentCaptcha;
             tbCaptcha.TextDecorations = TextDecorations.Strikethrough;
