@@ -1,7 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading; // <- нужен для DispatcherTimer
+using System.Windows.Threading;
 using HashPasswords;
 using ModulesPR3.Services;
 using ModulesPR5.Models;
@@ -15,7 +15,6 @@ namespace ModulesPR3.Pages
         private int failedAttempts = 0;
         private string currentCaptcha = string.Empty;
 
-        // Блокировка
         private DispatcherTimer lockoutTimer;
         private int lockoutSecondsRemaining = 0;
         private const int LOCKOUT_SECONDS = 10;
@@ -50,7 +49,6 @@ namespace ModulesPR3.Pages
 
         private void StartLockout()
         {
-            // Отключаем поля и кнопки
             SetInputsEnabled(false);
 
             lockoutSecondsRemaining = LOCKOUT_SECONDS;
@@ -65,10 +63,6 @@ namespace ModulesPR3.Pages
             lockoutTimer.Stop();
             tbLockTimer.Visibility = Visibility.Collapsed;
             SetInputsEnabled(true);
-
-            // после разблокировки сбрасываем счётчик неудач и капчу (по желанию)
-            failedAttempts = 0;
-            HideCaptcha();
         }
 
         private void UpdateLockTimerText()
@@ -82,11 +76,7 @@ namespace ModulesPR3.Pages
             txtbPassword.IsEnabled = enabled;
             btnLogIn.IsEnabled = enabled;
             btnLogInGuest.IsEnabled = enabled;
-
-            // Капча может быть показана; контролируйте её активность отдельно
             txtbCaptcha.IsEnabled = enabled;
-            // Если хотите полностью скрывать капчу при блокировке, можете
-            // CaptchaPanel.IsEnabled = enabled;
         }
 
         private void BtnLogIn_OnClick(object sender, RoutedEventArgs e)
