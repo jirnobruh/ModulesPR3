@@ -83,11 +83,24 @@ namespace ModulesPR3.Pages
         {
             try
             {
-                // Если в данный момент заблокировано — прерываем (доп. защита)
                 if (!btnLogIn.IsEnabled) return;
 
                 string login = txtbLogin.Text.Trim();
                 string passwordHash = Hash.HashPassword(txtbPassword.Password.Trim());
+
+                if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(passwordHash))
+                {
+                    MessageBox.Show("Введите логин и пароль.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Проверка рабочего времени до авторизации
+                var now = DateTime.Now;
+                if (!Session.IsWithinWorkHours(now))
+                {
+                    MessageBox.Show("Доступ к системе запрещён: сейчас не рабочее время (10:00 - 19:00).", "Доступ запрещён", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
 
                 // Если капча показана, проверяем её ввод до обращения к БД
                 if (IsCaptchaVisible())
@@ -96,7 +109,7 @@ namespace ModulesPR3.Pages
                     if (string.IsNullOrEmpty(entered) || !string.Equals(entered, currentCaptcha, StringComparison.OrdinalIgnoreCase))
                     {
                         MessageBox.Show("Код капчи введён неверно. Попробуйте снова.");
-                        GenerateCaptcha(); // обновляем капчу при неверном вводе
+                        GenerateCaptcha();
                         failedAttempts++;
                         CheckLockoutAfterFailure();
                         return;
@@ -109,15 +122,64 @@ namespace ModulesPR3.Pages
                 if (auth != null)
                 {
                     var role = db.Roles.FirstOrDefault(x => x.id == auth.role_id);
-                    MessageBox.Show("Вы вошли под: " + role.Title.ToString());
-                    // Успешный вход — скрываем капчу и сбрасываем счётчик
+
+                    var applicant = db.Applicants.FirstOrDefault(a => a.auth_id == auth.id);
+
+                    UserSession userSession;
+                    if (applicant != null)
+                    {
+                        userSession = new UserSession
+                        {
+                            Id = applicant.id,
+                            LastName = applicant.last_name ?? string.Empty,
+                            FirstName = applicant.first_name ?? string.Empty,
+                            MiddleName = applicant.middle_name ?? string.Empty,
+                            Role = role?.Title ?? string.Empty
+                        };
+                    }
+                    else
+                    {
+                        applicant = db.Applicants.FirstOrDefault(a => a.email == auth.login);
+                        if (applicant != null)
+                        {
+                            userSession = new UserSession
+                            {
+                                Id = applicant.id,
+                                LastName = applicant.last_name ?? string.Empty,
+                                FirstName = applicant.first_name ?? string.Empty,
+                                MiddleName = applicant.middle_name ?? string.Empty,
+                                Role = role?.Title ?? string.Empty
+                            };
+                        }
+                        else
+                        {
+                            userSession = new UserSession
+                            {
+                                Id = auth.id,
+                                LastName = role?.Title ?? "Пользователь",
+                                FirstName = string.Empty,
+                                MiddleName = string.Empty,
+                                Role = role?.Title ?? string.Empty
+                            };
+                        }
+                    }
+
+                    Session.CurrentUser = userSession;
+
                     HideCaptcha();
                     failedAttempts = 0;
-                    LoadPage(role.Title.ToString());
+
+                    // Показать приветствие
+                    var greeting = Session.GetGreeting(now);
+                    if (!string.IsNullOrEmpty(greeting))
+                    {
+                        MessageBox.Show(greeting, "Приветствие", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+
+                    LoadPage(role?.Title?.ToString());
                 }
                 else
                 {
-                    // Неверный логин/пароль
                     MessageBox.Show("Вы ввели логин или пароль неверно!");
                     failedAttempts++;
                     GenerateCaptcha();
@@ -144,6 +206,22 @@ namespace ModulesPR3.Pages
             try
             {
                 if (!btnLogInGuest.IsEnabled) return;
+
+                Session.CurrentUser = new UserSession
+                {
+                    Id = 0,
+                    LastName = "Гость",
+                    FirstName = string.Empty,
+                    MiddleName = string.Empty,
+                    Role = "Guest"
+                };
+
+                var greeting = Session.GetGreeting(DateTime.Now);
+                if (!string.IsNullOrEmpty(greeting))
+                {
+                    MessageBox.Show(greeting, "Приветствие", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
                 NavigationService.Navigate(new Pages.Clients());
             }
             catch (Exception exception)
