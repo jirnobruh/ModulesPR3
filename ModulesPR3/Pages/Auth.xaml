@@ -86,7 +86,6 @@
                 </Grid>
                 
                 <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,0">
-                    <!-- Зарезервировано под таймер, если нужен будет -->
                     <TextBlock x:Name="tbLockTimer"
                                Text=""
                                Foreground="Red"
