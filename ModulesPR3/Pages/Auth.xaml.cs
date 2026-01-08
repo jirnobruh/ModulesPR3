@@ -267,7 +267,7 @@ namespace ModulesPR3.Pages
                     NavigationService.Navigate(new Clients());
                     break;
                 case "AgentStaff":
-                    NavigationService.Navigate(new Clients());
+                    NavigationService.Navigate(new AgencyStaff());
                     break;
             }
         }

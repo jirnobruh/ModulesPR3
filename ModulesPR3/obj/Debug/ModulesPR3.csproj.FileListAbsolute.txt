@@ -29,3 +29,7 @@ C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.csproj.C
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.csproj.Up2Date
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.exe
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\ModulesPR3.pdb
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\AgentStaff.g.cs
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Guests.g.cs
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\AgentStaff.baml
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Guests.baml
