@@ -122,7 +122,7 @@ namespace ModulesPR3.Pages
                     var role = db.Roles.FirstOrDefault(x => x.id == auth.role_id);
 
                     var applicant = db.Applicants.FirstOrDefault(a => a.auth_id == auth.id);
-
+                    var staff = db.AgencyStaff.FirstOrDefault(s => s.auth_id == auth.id);
                     UserSession userSession;
                     if (applicant != null)
                     {
@@ -135,8 +135,7 @@ namespace ModulesPR3.Pages
                             Role = role.Title ?? string.Empty
                         };
                     }
-                    var staff = db.AgencyStaff.FirstOrDefault(s => s.auth_id == auth.id);
-                    if (staff != null)
+                    else if (staff != null)
                     {
                         userSession = new UserSession
                         {

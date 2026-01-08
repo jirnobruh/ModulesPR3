@@ -1,19 +1,17 @@
 <Page x:Class="ModulesPR3.Pages.Auth"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:ModulesPR3.Pages"
-      mc:Ignorable="d"
       Background="#f0f2f5"
-      Title="Auth" Height="500" Width="915">
+      Title="Auth">
+
     <Grid>
-        <Grid Width="350" Height="500"
-              VerticalAlignment="Center"
-              HorizontalAlignment="Center"
-              ClipToBounds="True">
-            <Rectangle Fill="White" RadiusX="10" RadiusY="10"/>
-            <Grid Margin="20">
+        <Border Background="White"
+                CornerRadius="10"
+                Padding="20"
+                MaxWidth="400"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -22,103 +20,81 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,8">
-                    <TextBlock Text="Авторизация"
-                               FontSize="28"
-                               FontWeight="Bold"
-                               Foreground="#333"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-                </Grid>
+                <!-- Заголовок -->
+                <TextBlock Grid.Row="0"
+                           Text="Авторизация"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#333"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
 
-                <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <!-- Поля ввода -->
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Логин" FontSize="16" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtbLogin"
+                             Width="240"
+                             Height="30"
+                             Padding="4"
+                             FontSize="15"
+                             Margin="0,0,0,10"/>
 
-                    <Grid Grid.Row="0" Margin="0,6,0,6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Text="Логин" FontSize="16" Grid.Row="0" Margin="0,0,0,5"/>
-                        <TextBox x:Name="txtbLogin"
-                                 Grid.Row="1"
+                    <TextBlock Text="Пароль" FontSize="16" Margin="0,0,0,5"/>
+                    <PasswordBox x:Name="txtbPassword"
+                                 Width="240"
                                  Height="30"
-                                 Width="250"
-                                 Padding="5"
-                                 Background="#eef"
-                                 BorderBrush="#ccc"
-                                 BorderThickness="1"/>
-                    </Grid>
+                                 Padding="4"
+                                 FontSize="15"
+                                 Margin="0,0,0,10"/>
 
-                    <Grid Grid.Row="1" Margin="0,6,0,6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Text="Пароль" FontSize="16" Grid.Row="0" Margin="0,10,0,5"/>
-                        <PasswordBox x:Name="txtbPassword"
-                                     Grid.Row="1"
-                                     Height="30"
-                                     Width="250"
-                                     Padding="5"
-                                     Background="#eef"
-                                     BorderBrush="#ccc"
-                                     BorderThickness="1"/>
-                    </Grid>
-                    <StackPanel Grid.Row="2" Margin="0,6,0,6" x:Name="CaptchaPanel" Visibility="Collapsed">
+                    <!-- Капча -->
+                    <StackPanel x:Name="CaptchaPanel" Visibility="Collapsed">
                         <TextBlock Text="Капча" FontSize="16" Margin="0,10,0,5"/>
                         <TextBlock x:Name="tbCaptcha" Text="Код капчи" FontSize="16" Margin="0,0,0,6"/>
                         <TextBox x:Name="txtbCaptcha"
+                                 Width="240"
                                  Height="30"
-                                 Width="250"
-                                 Padding="5"
-                                 Background="#eef"
-                                 BorderBrush="#ccc"
-                                 BorderThickness="1"/>
+                                 Padding="4"
+                                 FontSize="15"
+                                 Margin="0,0,0,10"/>
                     </StackPanel>
+                </StackPanel>
 
-                </Grid>
-                
-                <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,0">
-                    <TextBlock x:Name="tbLockTimer"
-                               Text=""
-                               Foreground="Red"
-                               FontSize="14"
-                               FontWeight="Bold"
-                               Visibility="Collapsed"
-                               HorizontalAlignment="Center"/>
+                <!-- Таймер блокировки -->
+                <TextBlock Grid.Row="2"
+                           x:Name="tbLockTimer"
+                           Foreground="Red"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Visibility="Collapsed"
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"/>
 
-                </Grid>
-                
-                <Grid Grid.Row="3" HorizontalAlignment="Center" Margin="0,20,0,0">
-                    <Button x:Name="btnLogIn"
-                            Content="Войти"
-                            Width="250"
-                            Height="35"
-                            Background="DarkBlue"
-                            Foreground="White"
-                            FontWeight="Bold"
-                            BorderThickness="0"
-                            Click="BtnLogIn_OnClick"/>
-                </Grid>
-                <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,20,0,0">
-                    <Button x:Name="btnLogInGuest"
-                            Content="Войти как гость"
-                            Width="250"
-                            Height="35"
-                            Background="DarkBlue"
-                            Foreground="White"
-                            FontWeight="Bold"
-                            BorderThickness="0"
-                            Click="BtnLogInGuest_OnClick"/>
-                </Grid>
+                <!-- Кнопки -->
+                <Button Grid.Row="3"
+                        x:Name="btnLogIn"
+                        Content="Войти"
+                        Width="250"
+                        Height="35"
+                        Background="DarkBlue"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Center"
+                        Click="BtnLogIn_OnClick"/>
+
+                <Button Grid.Row="4"
+                        x:Name="btnLogInGuest"
+                        Content="Войти как гость"
+                        Width="250"
+                        Height="35"
+                        Background="DarkBlue"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Center"
+                        Click="BtnLogInGuest_OnClick"/>
             </Grid>
-        </Grid>
+        </Border>
     </Grid>
 </Page>
