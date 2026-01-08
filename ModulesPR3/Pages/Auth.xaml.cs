@@ -94,7 +94,6 @@ namespace ModulesPR3.Pages
                     return;
                 }
 
-                // Проверка рабочего времени до авторизации
                 var now = DateTime.Now;
                 if (!Session.IsWithinWorkHours(now))
                 {
@@ -102,7 +101,6 @@ namespace ModulesPR3.Pages
                     return;
                 }
 
-                // Если капча показана, проверяем её ввод до обращения к БД
                 if (IsCaptchaVisible())
                 {
                     string entered = txtbCaptcha.Text?.Trim() ?? string.Empty;
@@ -222,7 +220,7 @@ namespace ModulesPR3.Pages
                     MessageBox.Show(greeting, "Приветствие", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
 
-                NavigationService.Navigate(new Pages.Clients());
+                NavigationService.Navigate(new Pages.Guests());
             }
             catch (Exception exception)
             {
@@ -266,6 +264,9 @@ namespace ModulesPR3.Pages
             switch (_role)
             {
                 case "Applicant":
+                    NavigationService.Navigate(new Clients());
+                    break;
+                case "AgentStaff":
                     NavigationService.Navigate(new Clients());
                     break;
             }

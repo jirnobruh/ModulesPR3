@@ -59,6 +59,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\AgentStaff.xaml.cs">
+      <DependentUpon>AgentStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Guests.xaml.cs">
+      <DependentUpon>Guests.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\CaptchaGenerator.cs" />
     <Compile Include="Services\Hash.cs" />
     <Page Include="MainWindow.xaml">
@@ -73,9 +79,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AgentStaff.xaml" />
     <Page Include="Pages\Auth.xaml" />
     <Page Include="Pages\Btns.xaml" />
     <Page Include="Pages\Clients.xaml" />
+    <Page Include="Pages\Guests.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\Auth.xaml.cs">
