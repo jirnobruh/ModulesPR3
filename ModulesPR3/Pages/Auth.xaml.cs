@@ -132,7 +132,7 @@ namespace ModulesPR3.Pages
                             LastName = applicant.last_name ?? string.Empty,
                             FirstName = applicant.first_name ?? string.Empty,
                             MiddleName = applicant.middle_name ?? string.Empty,
-                            Role = role?.Title ?? string.Empty
+                            Role = role.Title ?? string.Empty
                         };
                     }
                     var staff = db.AgencyStaff.FirstOrDefault(s => s.auth_id == auth.id);
@@ -144,7 +144,7 @@ namespace ModulesPR3.Pages
                             LastName = staff.full_name ?? string.Empty,
                             FirstName = string.Empty,
                             MiddleName = string.Empty,
-                            Role = role?.Title ?? string.Empty
+                            Role = role.Title ?? string.Empty
                         };
                     }
                     else
@@ -166,7 +166,7 @@ namespace ModulesPR3.Pages
                         MessageBox.Show(greeting, "Приветствие", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
 
-                    LoadPage(role?.Title?.ToString());
+                    LoadPage(role.Title);
                 }
                 else
                 {
@@ -260,6 +260,9 @@ namespace ModulesPR3.Pages
                     break;
                 case "AgentStaff":
                     NavigationService.Navigate(new AgentStaff());
+                    break;
+                case "Admin":
+                    NavigationService.Navigate(new AdminPanel());
                     break;
             }
         }

@@ -1,0 +1,34 @@
+<Page x:Class="ModulesPR3.Pages.AddEditStaffPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="AddEditStaffPage">
+
+    <ScrollViewer>
+        <StackPanel Margin="20">
+            <TextBlock Text="ФИО:"/>
+            <TextBox x:Name="txtFullName"/>
+
+            <TextBlock Text="Должность:"/>
+            <TextBox x:Name="txtPosition"/>
+
+            <TextBlock Text="Email:"/>
+            <TextBox x:Name="txtEmail"/>
+
+            <TextBlock Text="Телефон:"/>
+            <TextBox x:Name="txtPhone"/>
+
+            <!-- Новые поля -->
+            <TextBlock Text="Логин:"/>
+            <TextBox x:Name="txtLogin"/>
+
+            <TextBlock Text="Пароль:"/>
+            <PasswordBox x:Name="txtPassword"/>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Content="Сохранить" Width="120" Margin="5" Click="btnSave_Click"/>
+                <Button Content="Удалить" Width="120" Margin="5" Click="btnDelete_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+    </ScrollViewer>
+</Page>

@@ -33,3 +33,7 @@ C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\AgentStaff.g.
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Guests.g.cs
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\AgentStaff.baml
 C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\Guests.baml
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\AddEditStaffPage.baml
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\AdminPanel.baml
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\AddEditStaffPage.g.cs
+C:\Users\purpl\RiderProjects\ModulesPR3\ModulesPR3\obj\Debug\Pages\AdminPanel.g.cs
