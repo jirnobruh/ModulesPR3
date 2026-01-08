@@ -135,32 +135,24 @@ namespace ModulesPR3.Pages
                             Role = role?.Title ?? string.Empty
                         };
                     }
+                    var staff = db.AgencyStaff.FirstOrDefault(s => s.auth_id == auth.id);
+                    if (staff != null)
+                    {
+                        userSession = new UserSession
+                        {
+                            Id = staff.id,
+                            LastName = staff.full_name ?? string.Empty,
+                            FirstName = string.Empty,
+                            MiddleName = string.Empty,
+                            Role = role?.Title ?? string.Empty
+                        };
+                    }
                     else
                     {
-                        applicant = db.Applicants.FirstOrDefault(a => a.email == auth.login);
-                        if (applicant != null)
-                        {
-                            userSession = new UserSession
-                            {
-                                Id = applicant.id,
-                                LastName = applicant.last_name ?? string.Empty,
-                                FirstName = applicant.first_name ?? string.Empty,
-                                MiddleName = applicant.middle_name ?? string.Empty,
-                                Role = role?.Title ?? string.Empty
-                            };
-                        }
-                        else
-                        {
-                            userSession = new UserSession
-                            {
-                                Id = auth.id,
-                                LastName = role?.Title ?? "Пользователь",
-                                FirstName = string.Empty,
-                                MiddleName = string.Empty,
-                                Role = role?.Title ?? string.Empty
-                            };
-                        }
+                        MessageBox.Show("Пользователь не найден ни среди соискателей, ни среди сотрудников агентства.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
                     }
+
 
                     Session.CurrentUser = userSession;
 
@@ -267,7 +259,7 @@ namespace ModulesPR3.Pages
                     NavigationService.Navigate(new Clients());
                     break;
                 case "AgentStaff":
-                    NavigationService.Navigate(new AgencyStaff());
+                    NavigationService.Navigate(new AgentStaff());
                     break;
             }
         }
