@@ -6,6 +6,7 @@ using HashPasswords;
 using ModulesPR3.Services;
 using ModulesPR5;
 using ModulesPR5.Models;
+using ValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
 
 namespace ModulesPR3.Pages
 {
@@ -56,6 +57,27 @@ namespace ModulesPR3.Pages
                 auth.password = Hash.HashPassword(txtPassword.Password);
             }
 
+            // Валидация моделей
+            var staffErrors = ModelValidator.Validate(staff);
+            var authErrors = ModelValidator.Validate(auth);
+
+            // Проверка уникальности логина
+            if (db.Auth.Any(a => a.login == auth.login && a.id != auth.id))
+            {
+                authErrors.Add(new ValidationResult("Логин уже используется", new[] { "login" }));
+            }
+
+            // Если есть ошибки — выводим
+            if (staffErrors.Any() || authErrors.Any())
+            {
+                string msg = string.Join("\n", 
+                    staffErrors.Select(ex => ex.ErrorMessage)
+                        .Concat(authErrors.Select(ex => ex.ErrorMessage)));
+
+                MessageBox.Show(msg, "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            
             // Если новый сотрудник
             if (staff.id == 0)
             {

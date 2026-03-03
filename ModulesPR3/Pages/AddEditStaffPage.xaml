@@ -4,6 +4,30 @@
       Background="#f0f2f5"
       Title="AddEditStaffPage">
 
+    <Page.Resources>
+        <Style x:Key="ErrorTextBoxStyle" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="Tag" Value="error">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ErrorPasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="Tag" Value="error">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Border Background="White"
                 CornerRadius="10"
@@ -31,26 +55,32 @@
                 <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                     <TextBlock Text="ФИО:" FontSize="16" Margin="0,0,0,5"/>
                     <TextBox x:Name="txtFullName"
+                             Style="{StaticResource ErrorTextBoxStyle}"
                              Width="250" Height="30" FontSize="15" Margin="0,0,0,10"/>
 
                     <TextBlock Text="Должность:" FontSize="16" Margin="0,0,0,5"/>
                     <TextBox x:Name="txtPosition"
+                             Style="{StaticResource ErrorTextBoxStyle}"
                              Width="250" Height="30" FontSize="15" Margin="0,0,0,10"/>
 
                     <TextBlock Text="Email:" FontSize="16" Margin="0,0,0,5"/>
                     <TextBox x:Name="txtEmail"
+                             Style="{StaticResource ErrorTextBoxStyle}"
                              Width="250" Height="30" FontSize="15" Margin="0,0,0,10"/>
 
                     <TextBlock Text="Телефон:" FontSize="16" Margin="0,0,0,5"/>
                     <TextBox x:Name="txtPhone"
+                             Style="{StaticResource ErrorTextBoxStyle}"
                              Width="250" Height="30" FontSize="15" Margin="0,0,0,10"/>
 
                     <TextBlock Text="Логин:" FontSize="16" Margin="0,0,0,5"/>
                     <TextBox x:Name="txtLogin"
+                             Style="{StaticResource ErrorTextBoxStyle}"
                              Width="250" Height="30" FontSize="15" Margin="0,0,0,10"/>
 
                     <TextBlock Text="Пароль:" FontSize="16" Margin="0,0,0,5"/>
                     <PasswordBox x:Name="txtPassword"
+                                 Style="{StaticResource ErrorPasswordBoxStyle}"
                                  Width="250" Height="30" FontSize="15" Margin="0,0,0,10"/>
                 </StackPanel>
 

@@ -3,6 +3,30 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Background="#f0f2f5"
       Title="Auth">
+    
+    <Page.Resources>
+        <Style x:Key="ErrorTextBoxStyle" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="Tag" Value="error">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ErrorPasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="Tag" Value="error">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Border Background="White"
@@ -33,6 +57,7 @@
                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Логин" FontSize="16" Margin="0,0,0,5"/>
                     <TextBox x:Name="txtbLogin"
+                             Style="{StaticResource ErrorTextBoxStyle}"
                              Width="240"
                              Height="30"
                              Padding="4"
@@ -41,6 +66,7 @@
 
                     <TextBlock Text="Пароль" FontSize="16" Margin="0,0,0,5"/>
                     <PasswordBox x:Name="txtbPassword"
+                                 Style="{StaticResource ErrorPasswordBoxStyle}"
                                  Width="240"
                                  Height="30"
                                  Padding="4"

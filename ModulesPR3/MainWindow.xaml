@@ -7,22 +7,18 @@
         WindowStartupLocation="CenterScreen">
 
     <Grid>
-        <!-- Структура: Шапка + Контент -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>   <!-- Шапка -->
-            <RowDefinition Height="*"/>    <!-- Контент -->
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Шапка -->
         <DockPanel Grid.Row="0" Background="DarkBlue" LastChildFill="True">
-            <!-- Иконка слева -->
             <Image Source="/Resources/Logo.ico"
                    Width="50" Height="50"
                    Margin="20"
                    VerticalAlignment="Center"
                    DockPanel.Dock="Left"/>
 
-            <!-- Кнопка справа -->
             <Button x:Name="btnBack"
                     Content="Назад"
                     Margin="20"
@@ -34,7 +30,6 @@
                     FontWeight="Bold"/>
         </DockPanel>
 
-        <!-- Контент -->
         <Frame Grid.Row="1"
                x:Name="frmMain"
                NavigationUIVisibility="Hidden"
