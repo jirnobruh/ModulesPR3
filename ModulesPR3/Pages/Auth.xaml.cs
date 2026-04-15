@@ -27,6 +27,9 @@ namespace ModulesPR3.Pages
             InitializeLockoutTimer();
         }
 
+        /// <summary>
+        /// Инициализирует таймер блокировки и подписывает его на обработчик тиков.
+        /// </summary>
         private void InitializeLockoutTimer()
         {
             lockoutTimer = new DispatcherTimer();
@@ -47,6 +50,9 @@ namespace ModulesPR3.Pages
             }
         }
 
+        /// <summary>
+        /// Запускает режим временной блокировки формы входа после нескольких неудачных попыток авторизации.
+        /// </summary>
         private void StartLockout()
         {
             SetInputsEnabled(false);
@@ -58,6 +64,9 @@ namespace ModulesPR3.Pages
             lockoutTimer.Start();
         }
 
+        /// <summary>
+        /// Останавливает блокировку формы входа и повторно включает поля ввода.
+        /// </summary>
         private void StopLockout()
         {
             lockoutTimer.Stop();
@@ -65,11 +74,18 @@ namespace ModulesPR3.Pages
             SetInputsEnabled(true);
         }
 
+        /// <summary>
+        /// Обновляет текст таймера, отображающий оставшееся время до разблокировки.
+        /// </summary>
         private void UpdateLockTimerText()
         {
             tbLockTimer.Text = $"До разблокировки: {lockoutSecondsRemaining} с.";
         }
 
+        /// <summary>
+        /// Включает или отключает элементы ввода на форме авторизации.
+        /// </summary>
+        /// <param name="enabled">Флаг доступности элементов: true — включить, false — отключить.</param>
         private void SetInputsEnabled(bool enabled)
         {
             txtbLogin.IsEnabled = enabled;
@@ -182,6 +198,9 @@ namespace ModulesPR3.Pages
             }
         }
 
+        /// <summary>
+        /// Проверяет, нужно ли запускать блокировку после очередной неудачной попытки входа.
+        /// </summary>
         private void CheckLockoutAfterFailure()
         {
             if (failedAttempts >= LOCKOUT_THRESHOLD)
@@ -220,6 +239,9 @@ namespace ModulesPR3.Pages
             }
         }
 
+        /// <summary>
+        /// Генерирует новый текст капчи и отображает блок капчи на форме.
+        /// </summary>
         private void GenerateCaptcha()
         {
             currentCaptcha = CaptchaGenerator.GenerateCaptchaText(6);
@@ -228,6 +250,9 @@ namespace ModulesPR3.Pages
             ShowCaptcha();
         }
 
+        /// <summary>
+        /// Показывает элементы интерфейса, связанные с вводом капчи, и очищает поле ввода.
+        /// </summary>
         private void ShowCaptcha()
         {
             CaptchaPanel.Visibility = Visibility.Visible;
@@ -236,6 +261,9 @@ namespace ModulesPR3.Pages
             txtbCaptcha.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Скрывает элементы капчи и сбрасывает текущее значение капчи.
+        /// </summary>
         private void HideCaptcha()
         {
             CaptchaPanel.Visibility = Visibility.Collapsed;
@@ -245,11 +273,19 @@ namespace ModulesPR3.Pages
             txtbCaptcha.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Определяет, отображается ли в текущий момент блок капчи.
+        /// </summary>
+        /// <returns>true, если капча отображается; иначе false.</returns>
         private bool IsCaptchaVisible()
         {
             return CaptchaPanel.Visibility == Visibility.Visible;
         }
 
+        /// <summary>
+        /// Выполняет переход на страницу, соответствующую роли пользователя.
+        /// </summary>
+        /// <param name="_role">Название роли пользователя, определяющее целевую страницу.</param>
         private void LoadPage(string _role)
         {
             switch (_role)

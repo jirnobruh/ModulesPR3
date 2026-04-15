@@ -18,6 +18,9 @@ namespace ModulesPR3.Pages
             };
         }
 
+        /// <summary>
+        /// Загружает список сотрудников агентства в интерфейс и заполняет фильтр доступными должностями.
+        /// </summary>
         private void LoadStaff()
         {
             var db = Helper.GetContext();
